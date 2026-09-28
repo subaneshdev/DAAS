@@ -1,64 +1,31 @@
-# DAAS — Distribution as a Service
+# DaaS.media
 
-A complete responsive agency website in black, pink and warm white, with original copy for digital and physical brand distribution. The design draws on the editorial scale and floating navigation of dontmatter.eu, using original DAAS typography, layouts and campaign artwork.
+Next.js App Router, TypeScript and Tailwind CSS agency website. Original black, pink and white design; digital and physical distribution, with real estate as the first specialty.
 
-## Run locally
+## Run
 
-Requires Node.js 20.19+ or 22.12+.
+Use Node.js 22+ and npm. Run `npm ci`, then `npm run dev`. For production run `npm run build` and `npm start`. Deploy to a host supporting Next.js server routes, not static-file-only hosting.
 
-```sh
-npm ci
-npm run dev
-```
+## Edit
 
-Open the local address printed in your terminal.
-
-## Production build
-
-```sh
-npm run build
-npm run preview
-```
-
-The `dist/` folder is the deployable static website. Use `npm run build` as the hosting build command and `dist` as the output directory. Serve from the root of a domain; a subdirectory deployment requires setting Vite's `base` option. No backend, database or private credentials are required.
+- `src/content/services.ts` and `additional-services.ts`: service copy, SEO metadata, FAQs and related links.
+- `src/content/site.ts`: verified brand and email details.
+- `src/content/markets.ts`: research targets, not office locations.
+- `src/app/page.tsx`: homepage; `real-estate-marketing/page.tsx`: specialty page.
+- `src/app/globals.css`: brand styles and responsive layouts.
 
 ## Enquiries
 
-All email links use **contact@daas.media**. The enquiry form validates required fields and opens an email draft containing the brief. The visitor reviews and sends it in their email application. The download option produces a text brief as an alternative. The site does not itself send messages or store leads, and never reports an enquiry as submitted.
+The default form validates the brief and opens a prefilled email to contact@daas.media. Users can also download their brief. It does not claim that an email was sent. To enable server-side delivery, copy `.env.example` to `.env.local`, configure `RESEND_API_KEY` and `ENQUIRY_FROM_EMAIL` with a verified sender, and restart/redeploy. Never commit credentials. Test delivery with the business inbox before launch. Add host-level request rate limiting for the enquiry endpoint before enabling public direct delivery.
 
-To override the email address, copy `.env.example` to `.env` and set `VITE_CONTACT_EMAIL` before building. This address is public client-side configuration; never put secrets in a `VITE_` variable.
+Set `NEXT_PUBLIC_SITE_URL` to the final canonical origin before building. Set `PREVIEW_NOINDEX=1` for public staging deployments. Vercel preview deployments are also marked noindex. No analytics or advertising pixels are installed.
 
-For direct form delivery in a later version, connect a mail service or server endpoint with server-side validation, abuse protection and an appropriate privacy notice.
+## Checks
 
-## Content and design
+`npm run lint`, `npm run typecheck`, and `npm test`. Start the production server, then run `npm run check:seo` to crawl all 25 public pages, metadata, internal links, sitemap, robots, social image, missing routes and enquiry validation. The crawler does not submit a valid enquiry or send email.
 
-- Brand position: “Get seen. Everywhere.”
-- Digital: content, paid media, creators, community, search and email.
-- Physical: sampling, product seeding, retail visibility, outdoor media, pop-ups and activations.
-- Connected campaigns: launches, cross-channel creative, QR journeys and measurement.
-- Physical distribution is framed as marketing distribution. Warehousing and fulfilment are separately scoped.
-- Campaign panels are illustrative concepts, explicitly labelled; no client results or endorsements are invented.
-- Budget is free text so visitors can specify their own currency.
-- Typography is self-hosted DM Sans and Manrope. Font license files are in `public/fonts/`.
-- Original campaign mockups use HTML/CSS and SVG, without stock images or external media dependencies.
+## Launch details still needed
 
-## Editing
+Hosting/domain access, verified email-delivery sender and credentials if direct submission is wanted; optional phone/WhatsApp, legal entity, business address and social profiles. Client work, permissions and approved evidence are needed before publishing case studies or testimonials. None are invented in this site.
 
-- `src/main.js`: page content, services, examples, dialogs and enquiry flow.
-- `src/style.css`: brand palette, layout, motion and responsive styles.
-- `index.html`: page title, search description and social metadata.
-- `public/favicon.svg`: browser icon.
-
-## Accessibility and behaviour
-
-Semantic headings, skip navigation, labelled fields, native accessible dialogs, keyboard focus return, Escape-to-close, native disclosure panels, visible focus indicators and reduced-motion support are included. Navigation remains available on mobile.
-
-## Launch checklist
-
-1. Confirm final service scope and agency wording.
-2. Confirm `contact@daas.media` receives email.
-3. Choose hosting and connect the intended domain.
-4. Add the final canonical URL and a social preview image after the domain is chosen.
-5. Add real case studies and verified client material when available.
-
-Hosting and domain configuration are separate from the local build.
+See `docs/SEO-PLAN.md` and `docs/MARKET-RESEARCH.md` for page intent and the location expansion criteria.
