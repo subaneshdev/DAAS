@@ -46,6 +46,11 @@ export function Footer() {
           <p className="eyebrow">EXPLORE</p>
           <Link href="/real-estate-marketing/">Real estate distribution</Link>
           <Link href="/services/">All services</Link>
+          <Link href="/distribution/">Distribution approach</Link>
+          <Link href="/industries/">Industries</Link>
+          <Link href="/sample-projects/">Sample projects</Link>
+          <Link href="/resources/">Free resources</Link>
+          <Link href="/pilot/">Start a pilot</Link>
           <Link href="/locations/">Campaign coverage</Link>
           <Link href="/contact/">Discuss your distribution goals</Link>
           <Link href="/privacy/">Privacy</Link>

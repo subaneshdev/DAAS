@@ -4,6 +4,7 @@ import { StructuredData } from "@/components/structured-data";
 import { Breadcrumbs } from "@/components/ui";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { services } from "@/content/services";
+import { industries } from "@/content/growth";
 import { site } from "@/content/site";
 export const metadata = pageMetadata(
   "Discuss Your Distribution Goals | DaaS.media",
@@ -16,8 +17,13 @@ export default async function Contact({
   searchParams: Promise<{ service?: string }>;
 }) {
   const { service } = await searchParams;
+  const choices = [
+    ...services.map(({ slug, name }) => ({ slug, name })),
+    { slug: "pilot", name: "A focused pilot" },
+    ...industries.map((p) => ({ slug: `industry-${p.slug}`, name: p.name })),
+  ];
   const initial =
-    service === "real-estate" || services.some((s) => s.slug === service)
+    service === "real-estate" || choices.some((s) => s.slug === service)
       ? service!
       : "distribution-strategy";
   return (
@@ -59,7 +65,7 @@ export default async function Contact({
                 process.env.RESEND_API_KEY && process.env.ENQUIRY_FROM_EMAIL,
               )}
               initialService={initial}
-              services={services.map(({ slug, name }) => ({ slug, name }))}
+              services={choices}
             />
           </div>
         </div>

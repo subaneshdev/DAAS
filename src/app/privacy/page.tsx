@@ -22,9 +22,9 @@ export default function Privacy() {
         <h2>What you provide</h2>
         <p>
           The enquiry form asks for your name, email, business, service interest
-          and goals. Phone number, location and budget are optional. Please do
-          not include sensitive personal information or confidential buyer
-          records in your initial brief.
+          and goals. Phone number, location, budget and how you found us are
+          optional. Please do not include sensitive personal information or
+          confidential buyer records in your initial brief.
         </p>
         <h2>Email drafts and downloads</h2>
         <p>

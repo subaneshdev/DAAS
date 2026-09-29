@@ -47,3 +47,8 @@ Local fonts, responsive layouts, semantic landmarks, skip link, native disclosur
 ## Reference scope
 
 Design and service breadth were informed by https://dontmatter.eu/services/digital-marketing. Copy and implementation are original. ChatGPT Ads access and campaign suitability must be checked against https://developers.openai.com/ads before proposing a launch.
+
+
+## Organic growth expansion — September 2026
+
+Added /distribution/, /industries/ and distinct restaurant, manufacturing, B2B, food/beverage and FMCG scopes. Added /sample-projects/ with two explicitly fictional demonstrations, /resources/ with three ungated downloadable worksheets, and /pilot/ with a scoped engagement proposal. This brings the sitemap to 40 public HTML pages. The new detailed keyword map, phased publishing plan and source notes are in ORGANIC-GROWTH-PLAYBOOK.md. No client work, backlink placement, live index status or campaign results are invented.

@@ -229,6 +229,17 @@ export function EnquiryForm({
         />
         {error("message")}
       </label>
+      <label htmlFor="enquiry-discovery">
+        How did you hear about us? <span>(optional)</span>
+        <input
+          id="enquiry-discovery"
+          name="discovery"
+          maxLength={200}
+          placeholder="Search, a referral, social media, or another source"
+          {...attrs("discovery")}
+        />
+        {error("discovery")}
+      </label>
       <div className="honeypot" aria-hidden="true">
         <label>
           Website

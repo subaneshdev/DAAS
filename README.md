@@ -22,10 +22,16 @@ Set `NEXT_PUBLIC_SITE_URL` to the final canonical origin before building. Set `P
 
 ## Checks
 
-`npm run lint`, `npm run typecheck`, and `npm test`. Start the production server, then run `npm run check:seo` to crawl all 25 public pages, metadata, internal links, sitemap, robots, social image, missing routes and enquiry validation. The crawler does not submit a valid enquiry or send email.
+`npm run lint`, `npm run typecheck`, and `npm test`. Start the production server, then run `npm run check:seo` to crawl all 40 public pages, metadata, internal links, sitemap, robots, social image, missing routes and enquiry validation. The crawler does not submit a valid enquiry or send email.
 
 ## Launch details still needed
 
 Hosting/domain access, verified email-delivery sender and credentials if direct submission is wanted; optional phone/WhatsApp, legal entity, business address and social profiles. Client work, permissions and approved evidence are needed before publishing case studies or testimonials. None are invented in this site.
 
 See `docs/SEO-PLAN.md` and `docs/MARKET-RESEARCH.md` for page intent and the location expansion criteria.
+
+## Organic-growth expansion
+
+`src/content/growth.ts` owns five industry scopes, two fictional demonstration projects and three resource guides. The reusable layout is `src/components/growth-page.tsx`. Downloads live in `public/resources`. Homepage and footer link the new sections, and `growthPaths` supplies sitemap entries. There are 40 public HTML pages. Keep demonstration labels intact unless replacing the entire example with an authorised, evidenced client account.
+
+The optional discovery-source field is self-reported attribution, not analytics. See `docs/ORGANIC-GROWTH-PLAYBOOK.md`, `docs/OUTREACH-PREPARATION.md` and `docs/LAUNCH-CHECKLIST.md` for the practical operating plan, unsent drafts and launch dependencies.

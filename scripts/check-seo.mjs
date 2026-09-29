@@ -13,7 +13,7 @@ const xml = load(await sitemap.text(), { xmlMode: true });
 const urls = xml("loc")
   .map((_, el) => xml(el).text())
   .get();
-assert.equal(urls.length, 25);
+assert.equal(urls.length, 40);
 assert.equal(new Set(urls).size, urls.length);
 const titles = new Set(),
   descriptions = new Set(),
@@ -44,11 +44,13 @@ for (const canonical of urls) {
     "summary_large_image",
   );
   assert.ok(!$('meta[name="robots"]').attr("content")?.includes("noindex"));
+  let pageSchemas = 0;
   $('script[type="application/ld+json"]').each((_, el) => {
     JSON.parse($(el).text());
     schemas++;
+    pageSchemas++;
   });
-  assert.ok(schemas > 0);
+  assert.ok(pageSchemas > 0, `${path}: structured data`);
   $("img").each((_, el) =>
     assert.notEqual($(el).attr("alt"), undefined, `${path}: image alt`),
   );
@@ -91,3 +93,20 @@ assert.equal(foreign.status, 403);
 console.log(
   `PASS ${urls.length} server-rendered pages, ${internal.size} internal destinations, ${schemas} JSON-LD blocks, robots, OG image, 404s and API validation.`,
 );
+
+for (const path of [
+  "/industries/not-a-sector/",
+  "/resources/not-a-resource/",
+  "/sample-projects/not-a-project/",
+])
+  assert.equal((await fetch(`${base}${path}`)).status, 404);
+for (const path of [
+  "/resources/property-launch-brief.md",
+  "/resources/restaurant-discovery-checklist.md",
+  "/resources/enquiry-tracker.csv",
+]) {
+  const response = await fetch(`${base}${path}`);
+  assert.equal(response.status, 200);
+  assert.ok((await response.text()).length > 100);
+}
+console.log("PASS growth routes, missing slugs and downloadable resources");

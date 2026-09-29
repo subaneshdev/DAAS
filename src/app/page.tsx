@@ -253,6 +253,39 @@ export default function Home() {
           />
         </div>
       </section>
+      <section className="section-pad growth-home">
+        <p className="eyebrow">BUILDING OUR PORTFOLIO. SHOWING OUR THINKING.</p>
+        <h2 className="mt-6">
+          A clear approach.
+          <br />
+          <em>Work you can inspect.</em>
+        </h2>
+        <div className="service-card-grid mt-8">
+          <Link className="service-card" href="/sample-projects/">
+            <h3>Demonstration projects</h3>
+            <p>
+              Inspect fictional property and restaurant briefs, sample content
+              and measurement plans. Clearly labelled, with no invented client
+              results.
+            </p>
+            <span className="text-link mt-6">See the thinking ↗</span>
+          </Link>
+          <Link className="service-card" href="/resources/">
+            <h3>Useful, free resources</h3>
+            <p>
+              Prepare a property brief, review a restaurant’s discovery journey
+              or track genuine enquiries. Download the tools without an email
+              gate.
+            </p>
+            <span className="text-link mt-6">Explore the resources ↗</span>
+          </Link>
+        </div>
+        <nav className="growth-nav-links" aria-label="Explore distribution">
+          <Link href="/distribution/">Our distribution approach ↗</Link>
+          <Link href="/industries/">Explore industries ↗</Link>
+          <Link href="/pilot/">Start with a focused pilot ↗</Link>
+        </nav>
+      </section>
       <ContactBand />
     </main>
   );

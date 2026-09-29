@@ -12,6 +12,7 @@ export const enquirySchema = z.object({
     .trim()
     .min(20, "Tell us a little more (at least 20 characters).")
     .max(4000),
+  discovery: z.string().trim().max(200).default(""),
   consent: z.literal(true, {
     error: "Please agree that we may respond to your enquiry.",
   }),
@@ -19,7 +20,7 @@ export const enquirySchema = z.object({
 });
 export type Enquiry = z.infer<typeof enquirySchema>;
 export function enquiryText(data: Enquiry) {
-  return `Hello DaaS.media,\n\nI’d like to discuss my distribution goals.\n\nName: ${data.name}\nEmail: ${data.email}\nBusiness: ${data.company}\nPhone (optional): ${data.phone || "Not supplied"}\nService: ${data.service}\nTarget market: ${data.location || "To discuss"}\nBudget: ${data.budget || "To discuss"}\n\nGoals:\n${data.message}\n\nPermission to respond: Yes\n`;
+  return `Hello DaaS.media,\n\nI’d like to discuss my distribution goals.\n\nName: ${data.name}\nEmail: ${data.email}\nBusiness: ${data.company}\nPhone (optional): ${data.phone || "Not supplied"}\nService: ${data.service}\nTarget market: ${data.location || "To discuss"}\nBudget: ${data.budget || "To discuss"}\n\nGoals:\n${data.message}\n\nHow I found you: ${data.discovery || "Not supplied"}\n\nPermission to respond: Yes\n`;
 }
 export function enquiryMailto(data: Enquiry, email: string) {
   return `mailto:${email}?subject=${encodeURIComponent(`Distribution enquiry — ${data.company}`)}&body=${encodeURIComponent(enquiryText(data))}`;

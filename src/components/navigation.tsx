@@ -7,7 +7,7 @@ export function Navigation() {
     <nav className="floating-nav" aria-label="Main navigation">
       {[
         ["/", "Home"],
-        ["/real-estate-marketing/", "Real estate"],
+        ["/distribution/", "Explore"],
         ["/services/", "Services"],
         ["/contact/", "Discuss goals ↗"],
       ].map(([href, label]) => (
