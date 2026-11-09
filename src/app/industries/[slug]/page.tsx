@@ -2,10 +2,13 @@ import { notFound } from "next/navigation";
 import { industries } from "@/content/growth";
 import { GrowthDetail } from "@/components/growth-page";
 import { pageMetadata } from "@/lib/seo";
+
 export const dynamicParams = false;
+
 export function generateStaticParams() {
   return industries.map((p) => ({ slug: p.slug }));
 }
+
 export async function generateMetadata({
   params,
 }: {
@@ -18,8 +21,13 @@ export async function generateMetadata({
     page.title,
     page.description,
     "/industries/" + slug + "/",
+    {
+      ogImage: "/industries/opengraph-image/",
+      ogAlt: `${page.name} — DaaS.media`,
+    },
   );
 }
+
 export default async function Page({
   params,
 }: {

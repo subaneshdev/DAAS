@@ -1,16 +1,26 @@
 import Link from "next/link";
 import { industries } from "@/content/growth";
-import { pageMetadata, breadcrumbData } from "@/lib/seo";
+import { pageMetadata, breadcrumbData, webPageData } from "@/lib/seo";
 import { StructuredData } from "@/components/structured-data";
 import { Breadcrumbs, Cta, Arrow, Faq } from "@/components/ui";
+
 export const metadata = pageMetadata(
   "Digital & Physical Distribution Strategy | DaaS.media",
   "Connect useful content, search, communities and scoped physical activity. Explore DaaS.media’s distribution approach across real estate and other industries.",
   "/distribution/",
 );
+
 export default function Distribution() {
   return (
     <main id="main">
+      <StructuredData
+        data={webPageData({
+          name: "Digital & Physical Distribution Strategy | DaaS.media",
+          description:
+            "Connect useful content, search, communities and scoped physical activity across digital and real-world channels.",
+          path: "/distribution/",
+        })}
+      />
       <StructuredData
         data={breadcrumbData([
           { name: "Home", path: "/" },
@@ -126,11 +136,26 @@ export default function Distribution() {
           <Link className="growth-link" href="/sample-projects/">
             Inspect our labelled demonstration projects <Arrow />
           </Link>
+          <Link
+            className="growth-link"
+            href="/sample-projects/property-launch/"
+          >
+            Inspect the property launch demonstration <Arrow />
+          </Link>
           <Link className="growth-link" href="/resources/">
             Use the free planning resources <Arrow />
           </Link>
+          <Link
+            className="growth-link"
+            href="/resources/property-launch-brief/"
+          >
+            Download the property brief template <Arrow />
+          </Link>
           <Link className="growth-link" href="/pilot/">
             Explore a focused pilot <Arrow />
+          </Link>
+          <Link className="growth-link" href="/services/seo/">
+            Explore SEO & organic growth <Arrow />
           </Link>
         </div>
       </section>

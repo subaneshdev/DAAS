@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 export function Navigation() {
   const path = usePathname();
   return (
     <nav className="floating-nav" aria-label="Main navigation">
       {[
         ["/", "Home"],
+        ["/about/", "About"],
         ["/distribution/", "Explore"],
         ["/services/", "Services"],
         ["/contact/", "Discuss goals ↗"],

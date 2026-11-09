@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, getService } from "@/content/services";
-import { pageMetadata, serviceData, breadcrumbData } from "@/lib/seo";
+import {
+  pageMetadata,
+  serviceData,
+  breadcrumbData,
+  webPageData,
+} from "@/lib/seo";
 import { StructuredData } from "@/components/structured-data";
 import {
   Breadcrumbs,
@@ -11,10 +16,13 @@ import {
   Arrow,
   ContactBand,
 } from "@/components/ui";
+
 export const dynamicParams = false;
+
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
+
 export async function generateMetadata({
   params,
 }: {
@@ -22,8 +30,12 @@ export async function generateMetadata({
 }) {
   const s = getService((await params).slug);
   if (!s) return {};
-  return pageMetadata(s.title, s.description, `/services/${s.slug}/`);
+  return pageMetadata(s.title, s.description, `/services/${s.slug}/`, {
+    ogImage: "/services/opengraph-image/",
+    ogAlt: `${s.name} — DaaS.media`,
+  });
 }
+
 export default async function ServicePage({
   params,
 }: {
@@ -31,16 +43,22 @@ export default async function ServicePage({
 }) {
   const s = getService((await params).slug);
   if (!s) notFound();
+  const path = `/services/${s.slug}/`;
   return (
     <main id="main">
       <StructuredData
-        data={serviceData(s.name, s.description, `/services/${s.slug}/`)}
+        data={webPageData({
+          name: s.title,
+          description: s.description,
+          path,
+        })}
       />
+      <StructuredData data={serviceData(s.name, s.description, path)} />
       <StructuredData
         data={breadcrumbData([
           { name: "Home", path: "/" },
           { name: "Services", path: "/services/" },
-          { name: s.name, path: `/services/${s.slug}/` },
+          { name: s.name, path },
         ])}
       />
       <section className="page-hero section-pad">
@@ -121,6 +139,20 @@ export default async function ServicePage({
           </small>
         </div>
       </section>
+      {s.deepDive && (
+        <section className="section-pad paper pt-0">
+          <Label number="04 — IN PRACTICE">{s.deepDive.label}</Label>
+          <p className="lead mt-6">{s.deepDive.heading}</p>
+          <div className="coverage-grid">
+            {s.deepDive.blocks.map((block) => (
+              <article key={block.title}>
+                <h2>{block.title}</h2>
+                <p className="body-copy">{block.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
       <section id="questions" className="section-pad paper pt-0">
         <div className="faq-grid">
           <h2>
@@ -145,7 +177,9 @@ export default async function ServicePage({
         )}
       </section>
       <section className="section-pad">
-        <Label number="04 — BETTER CONNECTED">RELATED SERVICES</Label>
+        <Label number={s.deepDive ? "05 — BETTER CONNECTED" : "04 — BETTER CONNECTED"}>
+          RELATED SERVICES
+        </Label>
         <div className="related-grid">
           {s.related.map((slug) => {
             const item = getService(slug)!;
@@ -157,6 +191,19 @@ export default async function ServicePage({
             );
           })}
         </div>
+        {s.relatedGuides && s.relatedGuides.length > 0 && (
+          <div className="mt-12">
+            <p className="eyebrow">FURTHER READING &amp; TOOLS</p>
+            <div className="growth-link-grid">
+              {s.relatedGuides.map((guide) => (
+                <Link className="growth-link" key={guide.href} href={guide.href}>
+                  {guide.label}
+                  <Arrow />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
       <ContactBand />
     </main>

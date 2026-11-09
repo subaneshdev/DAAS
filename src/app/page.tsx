@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, webPageData } from "@/lib/seo";
+import { StructuredData } from "@/components/structured-data";
 import { Arrow, Star, Cta, Label, Faq, ContactBand } from "@/components/ui";
 import { services } from "@/content/services";
 export const metadata = pageMetadata(
@@ -10,6 +11,14 @@ export const metadata = pageMetadata(
 export default function Home() {
   return (
     <main id="main">
+      <StructuredData
+        data={webPageData({
+          name: "Digital Marketing Agency in Chennai | DaaS.media",
+          description:
+            "DaaS.media builds digital campaigns, content and distribution systems for businesses in Chennai. Explore our services and discuss your growth goals.",
+          path: "/",
+        })}
+      />
       <section className="home-hero section-pad">
         <div className="hero-kicker">
           <span className="eyebrow">

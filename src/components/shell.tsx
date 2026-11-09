@@ -44,6 +44,7 @@ export function Footer() {
       <div className="footer-links">
         <div>
           <p className="eyebrow">EXPLORE</p>
+          <Link href="/about/">About DaaS.media</Link>
           <Link href="/real-estate-marketing/">Real estate distribution</Link>
           <Link href="/services/">All services</Link>
           <Link href="/distribution/">Distribution approach</Link>

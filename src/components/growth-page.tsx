@@ -1,8 +1,22 @@
 import Link from "next/link";
 import type { GrowthPage } from "@/content/growth";
-import { Breadcrumbs, Cta, Faq, Arrow } from "@/components/ui";
+import { Breadcrumbs, Cta, Faq, Arrow, Label } from "@/components/ui";
 import { StructuredData } from "@/components/structured-data";
-import { breadcrumbData, serviceData } from "@/lib/seo";
+import {
+  breadcrumbData,
+  serviceData,
+  collectionPageData,
+  guidePageData,
+  webPageData,
+} from "@/lib/seo";
+
+export type EditorialNote = {
+  label: string;
+  heading: string;
+  blocks: { title: string; text: string }[];
+  links?: { label: string; href: string }[];
+};
+
 export function GrowthDetail({
   page,
   group,
@@ -23,7 +37,39 @@ export function GrowthDetail({
         ])}
       />
       {group === "industries" && (
-        <StructuredData data={serviceData(page.name, page.description, path)} />
+        <>
+          <StructuredData
+            data={serviceData(page.name, page.description, path)}
+          />
+          <StructuredData
+            data={webPageData({
+              name: page.title,
+              description: page.description,
+              path,
+            })}
+          />
+        </>
+      )}
+      {group === "resources" && (
+        <StructuredData
+          data={guidePageData({
+            type: "TechArticle",
+            name: page.title,
+            description: page.description,
+            path,
+            isFree: true,
+          })}
+        />
+      )}
+      {group === "sample-projects" && (
+        <StructuredData
+          data={guidePageData({
+            type: "CreativeWork",
+            name: page.title,
+            description: page.description,
+            path,
+          })}
+        />
       )}
       <section className="page-hero section-pad">
         <Breadcrumbs
@@ -47,7 +93,45 @@ export function GrowthDetail({
           )}
         </div>
       </section>
-      {group === "sample-projects" && <section className="section-pad sample-board-wrap"><figure className="sample-board"><figcaption className="eyebrow">ILLUSTRATIVE CAMPAIGN BOARD / NOT A LIVE CAMPAIGN</figcaption><blockquote>{page.slug === "property-launch" ? "Understand the project before you plan a visit." : "Planning a meal together? See the menu before you decide."}</blockquote><div className="sample-board-flow">{(page.slug === "property-launch" ? ["Verified project facts", "Useful property content", "Project information page", "Qualified conversation"] : ["Accurate venue details", "Original menu content", "Menu and booking page", "A relevant enquiry"]).map((step,i)=><div key={step}><span className="eyebrow">0{i+1}</span><p>{step}</p></div>)}</div><p className="sample-board-note">Creative direction only. A real business must supply and approve the facts before publication.</p></figure></section>}
+      {group === "sample-projects" && (
+        <section className="section-pad sample-board-wrap">
+          <figure className="sample-board">
+            <figcaption className="eyebrow">
+              ILLUSTRATIVE CAMPAIGN BOARD / NOT A LIVE CAMPAIGN
+            </figcaption>
+            <blockquote>
+              {page.slug === "property-launch"
+                ? "Understand the project before you plan a visit."
+                : "Planning a meal together? See the menu before you decide."}
+            </blockquote>
+            <div className="sample-board-flow">
+              {(page.slug === "property-launch"
+                ? [
+                    "Verified project facts",
+                    "Useful property content",
+                    "Project information page",
+                    "Qualified conversation",
+                  ]
+                : [
+                    "Accurate venue details",
+                    "Original menu content",
+                    "Menu and booking page",
+                    "A relevant enquiry",
+                  ]
+              ).map((step, i) => (
+                <div key={step}>
+                  <span className="eyebrow">0{i + 1}</span>
+                  <p>{step}</p>
+                </div>
+              ))}
+            </div>
+            <p className="sample-board-note">
+              Creative direction only. A real business must supply and approve
+              the facts before publication.
+            </p>
+          </figure>
+        </section>
+      )}
       <section className="section-pad paper">
         <div className="growth-layout">
           <aside className="growth-aside">
@@ -125,21 +209,35 @@ export function GrowthDetail({
     </main>
   );
 }
+
 export function GrowthIndex({
   title,
   headline,
   intro,
   group,
   pages,
+  editorialNote,
 }: {
   title: string;
   headline: string;
   intro: string;
   group: string;
   pages: GrowthPage[];
+  editorialNote?: EditorialNote;
 }) {
   return (
     <main id="main">
+      <StructuredData
+        data={collectionPageData({
+          name: title,
+          description: intro,
+          path: `/${group}/`,
+          items: pages.map((p) => ({
+            name: p.name,
+            path: `/${group}/${p.slug}/`,
+          })),
+        })}
+      />
       <StructuredData
         data={breadcrumbData([
           { name: "Home", path: "/" },
@@ -180,6 +278,33 @@ export function GrowthIndex({
           </Link>
         </div>
       </section>
+      {editorialNote && (
+        <section className="section-pad">
+          <Label number="02 — METHOD">{editorialNote.label}</Label>
+          <p className="lead mt-8 growth-intro">{editorialNote.heading}</p>
+          <div className="coverage-grid">
+            {editorialNote.blocks.map((block) => (
+              <article key={block.title}>
+                <h2>{block.title}</h2>
+                <p className="body-copy">{block.text}</p>
+              </article>
+            ))}
+          </div>
+          {editorialNote.links && editorialNote.links.length > 0 && (
+            <div className="growth-link-grid mt-8">
+              {editorialNote.links.map((link) => (
+                <Link
+                  className="growth-link"
+                  key={link.href}
+                  href={link.href}
+                >
+                  {link.label} <Arrow />
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
     </main>
   );
 }

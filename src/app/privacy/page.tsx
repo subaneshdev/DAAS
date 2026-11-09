@@ -1,14 +1,32 @@
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbData, webPageData } from "@/lib/seo";
+import { StructuredData } from "@/components/structured-data";
 import { Breadcrumbs } from "@/components/ui";
 import { site } from "@/content/site";
+
 export const metadata = pageMetadata(
   "Privacy & Enquiry Information | DaaS.media",
   "How DaaS.media’s website handles enquiry details, email drafts and downloaded briefs. Contact us with questions about your information.",
   "/privacy/",
+  { noIndex: true },
 );
+
 export default function Privacy() {
   return (
     <main id="main" className="section-pad paper">
+      <StructuredData
+        data={webPageData({
+          name: "Privacy & Enquiry Information | DaaS.media",
+          description:
+            "How DaaS.media’s website handles enquiry details, email drafts and downloaded briefs.",
+          path: "/privacy/",
+        })}
+      />
+      <StructuredData
+        data={breadcrumbData([
+          { name: "Home", path: "/" },
+          { name: "Privacy", path: "/privacy/" },
+        ])}
+      />
       <Breadcrumbs items={[{ name: "Privacy" }]} />
       <div className="prose-page">
         <h1>

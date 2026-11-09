@@ -1,16 +1,26 @@
 import Link from "next/link";
-import { pageMetadata, breadcrumbData } from "@/lib/seo";
+import { pageMetadata, breadcrumbData, webPageData } from "@/lib/seo";
 import { StructuredData } from "@/components/structured-data";
 import { Breadcrumbs, Label, Cta, Faq, ContactBand } from "@/components/ui";
 import { markets } from "@/content/markets";
+
 export const metadata = pageMetadata(
   "Campaign Coverage Across India | DaaS.media",
   "DaaS.media runs remote campaigns across India. Learn how we scope local audiences, content, shoots and activations around your market and brief.",
   "/locations/",
 );
+
 export default function Locations() {
   return (
     <main id="main">
+      <StructuredData
+        data={webPageData({
+          name: "Campaign Coverage Across India | DaaS.media",
+          description:
+            "How DaaS.media runs remote digital campaigns across India while scoping Chennai and local on-ground requirements carefully.",
+          path: "/locations/",
+        })}
+      />
       <StructuredData
         data={breadcrumbData([
           { name: "Home", path: "/" },

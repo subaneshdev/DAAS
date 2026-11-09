@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { pageMetadata, breadcrumbData, serviceData } from "@/lib/seo";
+import {
+  pageMetadata,
+  breadcrumbData,
+  serviceData,
+  webPageData,
+} from "@/lib/seo";
 import { StructuredData } from "@/components/structured-data";
 import {
   Breadcrumbs,
@@ -12,8 +17,12 @@ import {
 } from "@/components/ui";
 export const metadata = pageMetadata(
   "Real Estate Marketing Agency in Chennai | DaaS.media",
-  "Reach relevant property buyers through real estate content, paid campaigns, local media and lead generation. Explore DaaS.media’s real estate distribution service.",
+  "Reach relevant property buyers in Chennai and across India with focused content, local media, paid ads and lead generation. Real estate marketing by DaaS.media.",
   "/real-estate-marketing/",
+  {
+    ogImage: "/real-estate-marketing/opengraph-image/",
+    ogAlt: "Real Estate Marketing Agency in Chennai — DaaS.media",
+  },
 );
 const channels = [
   [
@@ -50,6 +59,14 @@ const channels = [
 export default function RealEstate() {
   return (
     <main id="main">
+      <StructuredData
+        data={webPageData({
+          name: "Real Estate Marketing Agency in Chennai | DaaS.media",
+          description:
+            "Reach relevant property buyers in Chennai and across India with focused content, local media, paid ads and lead generation.",
+          path: "/real-estate-marketing/",
+        })}
+      />
       <StructuredData
         data={serviceData(
           "Real estate distribution and marketing",
@@ -368,6 +385,64 @@ export default function RealEstate() {
               <Arrow />
             </Link>
           ))}
+        </div>
+      </section>
+      <section className="section-pad paper">
+        <Label number="08 — INSPECT THE THINKING">
+          DEMONSTRATIONS & PLANNING TOOLS.
+        </Label>
+        <div className="section-heading">
+          <h2>
+            Work you can inspect.
+            <br />
+            <em>Free resources you can use.</em>
+          </h2>
+          <p className="body-copy">
+            Explore our residential launch demonstration brief and practical
+            planning worksheets.
+          </p>
+        </div>
+        <div className="service-card-grid mt-8">
+          <Link
+            className="service-card"
+            href="/sample-projects/property-launch/"
+          >
+            <h3>Residential property launch demonstration</h3>
+            <p>
+              Inspect our sample property launch brief, audience questions,
+              landing page structure, content sequence and measurement plan.
+              Clearly labelled illustrative planning.
+            </p>
+            <span className="text-link mt-6">
+              See the property demonstration ↗
+            </span>
+          </Link>
+          <Link
+            className="service-card"
+            href="/resources/property-launch-brief/"
+          >
+            <h3>Property launch briefing template (.md)</h3>
+            <p>
+              Download our editable Markdown briefing worksheet to organise
+              project facts, buyer questions, content approvals and enquiry
+              follow-up before launch. Free, ungated download.
+            </p>
+            <span className="text-link mt-6">
+              Download briefing template ↗
+            </span>
+          </Link>
+          <Link
+            className="service-card"
+            href="/resources/enquiry-tracker/"
+          >
+            <h3>Campaign enquiry tracker template (.csv)</h3>
+            <p>
+              Download a simple spreadsheet to track genuine property enquiries,
+              sources, qualification stages and team follow-up. Free, ungated
+              download.
+            </p>
+            <span className="text-link mt-6">Download enquiry tracker ↗</span>
+          </Link>
         </div>
       </section>
       <ContactBand />

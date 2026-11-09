@@ -1,14 +1,31 @@
 import Link from "next/link";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbData, webPageData } from "@/lib/seo";
+import { StructuredData } from "@/components/structured-data";
 import { Breadcrumbs, Cta, Faq } from "@/components/ui";
+
 export const metadata = pageMetadata(
   "A Focused Marketing Pilot | DaaS.media",
   "Start with one business objective, a useful page, a small content package and an enquiry review. Discuss a clearly scoped DaaS.media pilot engagement.",
   "/pilot/",
 );
+
 export default function Pilot() {
   return (
     <main id="main">
+      <StructuredData
+        data={webPageData({
+          name: "A Focused Marketing Pilot | DaaS.media",
+          description:
+            "Start with one business objective, a useful landing page, focused content assets and an enquiry-tracking review.",
+          path: "/pilot/",
+        })}
+      />
+      <StructuredData
+        data={breadcrumbData([
+          { name: "Home", path: "/" },
+          { name: "Pilot", path: "/pilot/" },
+        ])}
+      />
       <section className="page-hero section-pad">
         <Breadcrumbs items={[{ name: "Pilot" }]} />
         <p className="eyebrow mt-12">SMALL SCOPE. VISIBLE WORK.</p>
@@ -68,7 +85,9 @@ export default function Pilot() {
             <p>
               Ad spend, domain and hosting charges, travel, new photography,
               filming, printing, creator fees, media placement, CRM integrations
-              and ongoing management are outside this proposed starting scope. We quote the pilot fee after reviewing the brief, so you can decide with a clear scope and cost.
+              and ongoing management are outside this proposed starting scope.
+              We quote the pilot fee after reviewing the brief, so you can
+              decide with a clear scope and cost.
             </p>
           </article>
           <article>

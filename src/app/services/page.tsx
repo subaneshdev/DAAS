@@ -1,16 +1,91 @@
 import Link from "next/link";
 import { services } from "@/content/services";
-import { pageMetadata, breadcrumbData } from "@/lib/seo";
+import { pageMetadata, breadcrumbData, collectionPageData } from "@/lib/seo";
 import { StructuredData } from "@/components/structured-data";
 import { Breadcrumbs, Label, Cta, Arrow, ContactBand } from "@/components/ui";
+
 export const metadata = pageMetadata(
   "Digital, Creative & Distribution Services | DaaS.media",
   "Explore DaaS.media’s digital marketing, content, web and physical distribution services. Find the right starting point for your business in Chennai.",
   "/services/",
+  {
+    ogImage: "/services/opengraph-image/",
+    ogAlt: "Digital, Creative & Distribution Services — DaaS.media",
+  },
 );
+
+const serviceGroups = [
+  {
+    title: "Strategy & distribution",
+    number: "01",
+    description:
+      "Align your channel mix, customer journey and real-world touchpoints into a unified campaign architecture.",
+    slugs: ["digital-marketing", "physical-distribution"],
+  },
+  {
+    title: "Search & paid media",
+    number: "02",
+    description:
+      "Connect high-intent discovery across Google, Meta, local business listings and performance ad campaigns.",
+    slugs: [
+      "seo",
+      "google-business-profile",
+      "google-ads",
+      "meta-ads",
+      "performance-marketing",
+      "lead-generation",
+      "chatgpt-ads",
+    ],
+  },
+  {
+    title: "Content & creative",
+    number: "03",
+    description:
+      "Produce original video, photography, social narratives and brand assets designed for distribution.",
+    slugs: [
+      "video-production",
+      "video-editing",
+      "social-media-content",
+      "social-media-design",
+      "branding",
+    ],
+  },
+  {
+    title: "Websites & technology",
+    number: "04",
+    description:
+      "Build fast, server-rendered destinations, automated email nurture journeys and direct messaging flows.",
+    slugs: [
+      "web-design-development",
+      "hosting-support",
+      "whatsapp-marketing",
+      "email-marketing",
+    ],
+  },
+  {
+    title: "Measurement & support",
+    number: "05",
+    description:
+      "Inspect source attribution, lead qualification rates, tracking integrity and continuous campaign refinement.",
+    slugs: ["analytics"],
+  },
+];
+
 export default function Services() {
   return (
     <main id="main">
+      <StructuredData
+        data={collectionPageData({
+          name: "Digital, Creative & Distribution Services | DaaS.media",
+          description:
+            "Explore 19 marketing, content, paid media, SEO, web and physical distribution services offered by DaaS.media.",
+          path: "/services/",
+          items: services.map((s) => ({
+            name: s.name,
+            path: `/services/${s.slug}/`,
+          })),
+        })}
+      />
       <StructuredData
         data={breadcrumbData([
           { name: "Home", path: "/" },
@@ -34,16 +109,21 @@ export default function Services() {
           <Cta />
         </div>
       </section>
+
       <section className="section-pad paper">
-        {(
-          ["Strategy & reach", "Content & identity", "Web & systems"] as const
-        ).map((category, i) => (
-          <div className="service-category" key={category}>
-            <Label number={`0${i + 1}`}>{category.toUpperCase()}</Label>
-            <div className="service-card-grid">
-              {services
-                .filter((s) => s.category === category)
-                .map((s) => (
+        {serviceGroups.map((group) => {
+          const groupServices = group.slugs
+            .map((slug) => services.find((s) => s.slug === slug))
+            .filter((s): s is NonNullable<typeof s> => Boolean(s));
+
+          return (
+            <div className="service-category" key={group.title}>
+              <Label number={group.number}>{group.title.toUpperCase()}</Label>
+              <p className="body-copy max-w-2xl mb-8 text-neutral-600">
+                {group.description}
+              </p>
+              <div className="service-card-grid">
+                {groupServices.map((s) => (
                   <Link
                     href={`/services/${s.slug}/`}
                     className="service-card"
@@ -54,13 +134,23 @@ export default function Services() {
                       <Arrow />
                     </div>
                     <p>{s.intro}</p>
-                    <span className="eyebrow">EXPLORE THE SERVICE</span>
+                    <div className="mt-4 pt-4 border-t border-neutral-200">
+                      <span className="text-xs uppercase tracking-wider text-neutral-500 font-mono">
+                        Ideal fit:
+                      </span>
+                      <p className="text-xs text-neutral-700 mt-1">{s.fit}</p>
+                    </div>
+                    <span className="eyebrow mt-4 inline-block">
+                      EXPLORE THE SERVICE ↗
+                    </span>
                   </Link>
                 ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </section>
+
       <ContactBand />
     </main>
   );

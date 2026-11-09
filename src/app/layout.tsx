@@ -12,7 +12,12 @@ export const metadata: Metadata = {
     template: "%s | DaaS.media",
   },
   description: site.description,
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
+  },
 };
 export const viewport: Viewport = {
   themeColor: "#111111",

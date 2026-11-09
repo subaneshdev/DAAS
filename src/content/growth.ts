@@ -208,6 +208,10 @@ export const industries: GrowthPage[] = [
     ],
     links: [
       { label: "Lead generation scope", href: "/services/lead-generation/" },
+      {
+        label: "Manufacturing marketing approach",
+        href: "/industries/manufacturing/",
+      },
       { label: "A small pilot engagement", href: "/pilot/" },
       {
         label: "Enquiry tracking template",

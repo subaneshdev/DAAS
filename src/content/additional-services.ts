@@ -1,4 +1,5 @@
 import type { Service } from "./services";
+
 export const additionalServices: Service[] = [
   {
     slug: "email-marketing",
@@ -128,6 +129,13 @@ export const additionalServices: Service[] = [
         "Do you replace our CRM?",
         "No. Analytics can use agreed CRM stages and exports. Any integration is separately scoped and should collect only the data needed.",
       ],
+    ],
+    relatedGuides: [
+      {
+        label: "Download the free enquiry tracker (.csv)",
+        href: "/resources/enquiry-tracker/",
+      },
+      { label: "Start with a focused pilot", href: "/pilot/" },
     ],
     related: ["performance-marketing", "google-ads", "web-design-development"],
   },
@@ -330,6 +338,37 @@ export const additionalServices: Service[] = [
         "Hosting, domain services and ongoing support are specified separately so ownership and recurring costs are clear.",
       ],
     ],
+    deepDive: {
+      label: "WEB ARCHITECTURE & PERFORMANCE",
+      heading:
+        "Modern marketing sites must load fast on Indian mobile networks, stay readable before JavaScript settles and ship clean SEO foundations.",
+      blocks: [
+        {
+          title: "Server-rendered HTML & accessibility first",
+          text: "Headings, core copy, navigation and enquiry forms render in initial HTML—ensuring search crawlers, slow mobile connections and screen readers never wait on heavy client bundles.",
+        },
+        {
+          title: "Motion that never hides content",
+          text: "Interactive transitions and scroll choreography enhance clarity while falling back cleanly for reduced-motion preferences, non-WebGL devices and automated indexing bots.",
+        },
+        {
+          title: "Technical SEO & migration discipline",
+          text: "Clean URL hierarchy, single canonical host enforcement, XML sitemaps, truthful JSON-LD structured data and 301 redirect mapping during redesigns protect search equity.",
+        },
+        {
+          title: "Complete code & domain ownership",
+          text: "Your business retains direct ownership of the repository, domain registrar, DNS records and deployment accounts, accompanied by clean handover documentation.",
+        },
+      ],
+    },
+    relatedGuides: [
+      {
+        label: "See the property launch demonstration",
+        href: "/sample-projects/property-launch/",
+      },
+      { label: "Explore distribution strategy", href: "/distribution/" },
+      { label: "Start with a focused pilot", href: "/pilot/" },
+    ],
     related: ["seo", "hosting-support", "lead-generation"],
   },
   {
@@ -530,6 +569,13 @@ export const additionalServices: Service[] = [
         "Are production and placement fees included?",
         "These costs are broken out in the proposal alongside agency coordination and creative work.",
       ],
+    ],
+    relatedGuides: [
+      {
+        label: "FMCG & consumer brand activations",
+        href: "/industries/fmcg/",
+      },
+      { label: "Food & beverage brand discovery", href: "/industries/food-beverage/" },
     ],
     related: ["social-media-design", "social-media-content", "lead-generation"],
   },

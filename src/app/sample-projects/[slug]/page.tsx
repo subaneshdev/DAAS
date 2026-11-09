@@ -2,10 +2,13 @@ import { notFound } from "next/navigation";
 import { projects } from "@/content/growth";
 import { GrowthDetail } from "@/components/growth-page";
 import { pageMetadata } from "@/lib/seo";
+
 export const dynamicParams = false;
+
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
+
 export async function generateMetadata({
   params,
 }: {
@@ -18,8 +21,13 @@ export async function generateMetadata({
     page.title,
     page.description,
     "/sample-projects/" + slug + "/",
+    {
+      ogImage: "/sample-projects/opengraph-image/",
+      ogAlt: `${page.name} — DaaS.media`,
+    },
   );
 }
+
 export default async function Page({
   params,
 }: {

@@ -1,4 +1,11 @@
 import { additionalServices } from "./additional-services";
+
+export type ServiceDeepDive = {
+  label: string;
+  heading: string;
+  blocks: { title: string; text: string }[];
+};
+
 export type Service = {
   slug: string;
   name: string;
@@ -16,7 +23,10 @@ export type Service = {
   fit: string;
   faqs: [string, string][];
   related: string[];
+  deepDive?: ServiceDeepDive;
+  relatedGuides?: { label: string; href: string }[];
 };
+
 export const services: Service[] = [
   {
     slug: "digital-marketing",
@@ -83,6 +93,34 @@ export const services: Service[] = [
         "Which channels do you cover?",
         "Paid social, search advertising, SEO, email, WhatsApp, content and measurement. New advertising channels are assessed for account eligibility and suitability before being included.",
       ],
+    ],
+    deepDive: {
+      label: "HOW CHANNELS FIT TOGETHER",
+      heading:
+        "Digital marketing works reliably when foundational pages, capture forms and follow-up are ready before media spend scales.",
+      blocks: [
+        {
+          title: "Fix the destination before buying attention",
+          text: "Sending paid search or social traffic to a slow, ambiguous page wastes budget. We align core offer pages, verified product specs and clear enquiry routing before scaling campaigns.",
+        },
+        {
+          title: "Assign one clear job to each channel",
+          text: "Search captures existing buyer questions, paid social tests visual explanations and reach, owned content answers comparison questions and follow-up flows keep serious prospects moving.",
+        },
+        {
+          title: "Keep budgets and fees transparent",
+          text: "Ad spend goes directly from your account to platforms. Agency fees, video or shoot production, and third-party tools are separated in every proposal so trade-offs stay clear.",
+        },
+        {
+          title: "Connect Chennai nuance to national delivery",
+          text: "For Tamil Nadu audiences we account for local catchment and language review; for remote campaigns across Indian metros we coordinate digitally without inventing regional branch offices.",
+        },
+      ],
+    },
+    relatedGuides: [
+      { label: "Our distribution methodology", href: "/distribution/" },
+      { label: "Start with a focused pilot", href: "/pilot/" },
+      { label: "Campaign coverage across India", href: "/locations/" },
     ],
     related: ["performance-marketing", "seo", "email-marketing", "analytics"],
   },
@@ -153,6 +191,43 @@ export const services: Service[] = [
         "No. Auction conditions, offer, location, creative, qualification and follow-up all affect results. We agree a test plan and evaluate the evidence.",
       ],
     ],
+    deepDive: {
+      label: "META ADS EXECUTION",
+      heading:
+        "Social feeds reward clear context and authentic visuals over generic banner templates and frictionless spam traps.",
+      blocks: [
+        {
+          title: "Instant forms vs landing pages",
+          text: "We choose lead-capture mechanics based on sales capacity: higher-intent website destinations or structured Instant Forms with qualifying questions rather than accidental one-tap submissions.",
+        },
+        {
+          title: "Distinct creative angles, not cosmetic variants",
+          text: "Instead of changing button colours ten times, we test meaningful differences: project setting vs floor-plan utility, founder explanation vs product walkthrough, clarity vs urgency.",
+        },
+        {
+          title: "Special Ad Categories & policy compliance",
+          text: "Housing, credit and employment campaigns follow platform Special Ad Category constraints cleanly from setup, avoiding rejected ads and wasted learning cycles.",
+        },
+        {
+          title: "Creative fatigue & down-funnel review",
+          text: "Frequency, hold rate and sales team lead-qualification notes determine when creative needs refreshing—preventing budget burn on tired impressions.",
+        },
+      ],
+    },
+    relatedGuides: [
+      {
+        label: "See the property launch demonstration",
+        href: "/sample-projects/property-launch/",
+      },
+      {
+        label: "Download the property briefing template",
+        href: "/resources/property-launch-brief/",
+      },
+      {
+        label: "Download the campaign enquiry tracker",
+        href: "/resources/enquiry-tracker/",
+      },
+    ],
     related: ["lead-generation", "video-editing", "social-media-design"],
   },
   {
@@ -221,6 +296,43 @@ export const services: Service[] = [
         "Do you build landing pages too?",
         "Yes, landing page design and development can be scoped alongside ads. Keeping both aligned helps visitors understand the offer before they enquire.",
       ],
+    ],
+    deepDive: {
+      label: "SEARCH INTENT ARCHITECTURE",
+      heading:
+        "Profitable search campaigns protect budget with tight intent grouping, disciplined negative lists and dedicated landing pages.",
+      blocks: [
+        {
+          title: "Search term hygiene from day one",
+          text: "We review search-term reports consistently to exclude job-seeker queries, free-tool shoppers, competitor mismatches and wrong-city clicks before they drain spend.",
+        },
+        {
+          title: "Geographic & corridor precision",
+          text: "Location settings distinguish between people physically in a target area and people showing casual interest elsewhere—essential for Chennai corridors, local services and B2B catchments.",
+        },
+        {
+          title: "Message match & Quality Score focus",
+          text: "Every ad group connects to a dedicated page answering the specific configuration, capability or service query so prospects do not bounce hunting through a generic homepage.",
+        },
+        {
+          title: "Client-owned billing & data integrity",
+          text: "Your billing profile, historical search data and negative lists stay in a Google Ads account owned directly by your business with transparent admin access.",
+        },
+      ],
+    },
+    relatedGuides: [
+      {
+        label: "Real estate search & distribution",
+        href: "/real-estate-marketing/",
+      },
+      {
+        label: "B2B services marketing scope",
+        href: "/industries/b2b/",
+      },
+      {
+        label: "Campaign enquiry tracker template",
+        href: "/resources/enquiry-tracker/",
+      },
     ],
     related: ["performance-marketing", "web-design-development", "analytics"],
   },
@@ -291,6 +403,40 @@ export const services: Service[] = [
         "Only where the business serves that market and can provide distinct, useful information. We avoid mass-produced location pages.",
       ],
     ],
+    deepDive: {
+      label: "TECHNICAL & EDITORIAL SEO",
+      heading:
+        "Durable search visibility comes from clean crawl architecture, fast server-rendered content and pages written around real buyer questions.",
+      blocks: [
+        {
+          title: "Crawlability, canonicals & index hygiene",
+          text: "We eliminate duplicate www/non-www hosts, trailing-slash redirect chains, thin utility pages in sitemaps, orphan URLs and client-side rendering traps that hide copy from crawlers.",
+        },
+        {
+          title: "Commercial service & locality depth",
+          text: "Rather than generating dozens of identical suburb doorway pages, we build substantive pages anchored in verified project specs, buyer comparison questions and real service proof.",
+        },
+        {
+          title: "Truthful structured data & internal graphs",
+          text: "Schema markup (`Organization`, `Service`, `BreadcrumbList`, `TechArticle`) strictly mirrors visible on-page facts—strengthening topic clusters through descriptive internal links.",
+        },
+        {
+          title: "Enquiry attribution over vanity traffic",
+          text: "Search Console query impressions, landing-page engagement and qualified enquiry counts are reviewed together so SEO efforts map to actual pipeline conversations.",
+        },
+      ],
+    },
+    relatedGuides: [
+      {
+        label: "Manufacturing & industrial SEO scope",
+        href: "/industries/manufacturing/",
+      },
+      {
+        label: "Restaurant discovery checklist",
+        href: "/resources/restaurant-discovery-checklist/",
+      },
+      { label: "Start a focused SEO pilot", href: "/pilot/" },
+    ],
     related: ["google-business-profile", "web-design-development", "analytics"],
   },
   {
@@ -358,6 +504,40 @@ export const services: Service[] = [
         "Do you provide customer reviews?",
         "No. We help you ask real customers for honest feedback and respond to it. Reviews are never fabricated or purchased.",
       ],
+    ],
+    deepDive: {
+      label: "ELIGIBILITY & LOCAL TRUST",
+      heading:
+        "Google Business Profile visibility depends on guideline compliance, accurate primary categories and genuine customer trust signals.",
+      blocks: [
+        {
+          title: "Eligibility before optimisation",
+          text: "We confirm whether your operation qualifies as a staffed storefront/office or a Service-Area Business under Google’s guidelines—avoiding risky virtual-office suspensions.",
+        },
+        {
+          title: "Clean naming, categories & services",
+          text: "We match your legal business name without keyword stuffing, choose accurate primary and secondary categories, and populate real service descriptions and booking/contact URLs.",
+        },
+        {
+          title: "Review ethics & response cadence",
+          text: "We set up compliant, post-service workflows inviting genuine customers to leave honest feedback, alongside constructive response templates for both praise and complaints.",
+        },
+        {
+          title: "Tagged links & local destination alignment",
+          text: "Profile website and appointment links point to relevant local landing pages with clean campaign parameters so local discovery calls and form enquiries stay measurable.",
+        },
+      ],
+    },
+    relatedGuides: [
+      {
+        label: "Restaurant discovery checklist",
+        href: "/resources/restaurant-discovery-checklist/",
+      },
+      {
+        label: "See the restaurant demonstration",
+        href: "/sample-projects/restaurant-discovery/",
+      },
+      { label: "Restaurants & cafés marketing", href: "/industries/restaurants/" },
     ],
     related: ["seo", "social-media-design", "video-production"],
   },
@@ -427,6 +607,16 @@ export const services: Service[] = [
         "Can the flow connect to our CRM?",
         "Integration can be scoped after reviewing your CRM, permissions and lead-handling process. We test field mapping and ownership before live routing.",
       ],
+    ],
+    relatedGuides: [
+      {
+        label: "Property launch briefing template",
+        href: "/resources/property-launch-brief/",
+      },
+      {
+        label: "Download the enquiry tracker CSV",
+        href: "/resources/enquiry-tracker/",
+      },
     ],
     related: ["lead-generation", "email-marketing", "analytics"],
   },
@@ -701,6 +891,40 @@ export const services: Service[] = [
         "Additional channels can be considered where the audience, platform availability and account eligibility support the brief.",
       ],
     ],
+    deepDive: {
+      label: "PERFORMANCE SYSTEM",
+      heading:
+        "Disciplined paid acquisition isolates what changed, separates media noise from sales readiness and reports limitations candidly.",
+      blocks: [
+        {
+          title: "Test budgets before scale thresholds",
+          text: "We begin with structured tests around clear offer hypotheses, avoiding premature scaling before landing-page conversion paths and enquiry quality are proven.",
+        },
+        {
+          title: "One change at a time per test cell",
+          text: "Changing creative, audience and landing copy simultaneously hides what caused movement. We isolate variables so findings remain reusable across quarters.",
+        },
+        {
+          title: "Pipeline stages over platform-claimed ROAS",
+          text: "Self-reported platform conversions often double-count or over-attribute. We pair ad platform metrics with qualified-lead and booked-discussion tallies from your team.",
+        },
+        {
+          title: "High-ticket attribution realism",
+          text: "For categories like real estate and B2B services where buying takes weeks and crosses devices, we evaluate blended assist patterns alongside last-click conversions.",
+        },
+      ],
+    },
+    relatedGuides: [
+      {
+        label: "Food & beverage launch marketing",
+        href: "/industries/food-beverage/",
+      },
+      {
+        label: "Download the enquiry tracker CSV",
+        href: "/resources/enquiry-tracker/",
+      },
+      { label: "Start with a focused pilot", href: "/pilot/" },
+    ],
     related: ["meta-ads", "google-ads", "analytics", "lead-generation"],
   },
   {
@@ -770,9 +994,44 @@ export const services: Service[] = [
         "Yes. We can plan around a specific business audience, offer and sales process, with suitable channels and qualification criteria.",
       ],
     ],
+    deepDive: {
+      label: "ENQUIRY QUALITY ENGINEERING",
+      heading:
+        "More form submissions do not help if sales teams spend hours chasing duplicates, wrong-budget clicks or unverified numbers.",
+      blocks: [
+        {
+          title: "Proportionate friction filters bad leads",
+          text: "Asking one or two purposeful qualification questions—such as target locality, configuration or project timeline—improves sales relevance without overwhelming real buyers.",
+        },
+        {
+          title: "Immediate response protects lead shelf-life",
+          text: "Enquiries cool off quickly. We pair capture forms with clear acknowledgement pages and human or consented messaging handoffs so prospects know who is replying and when.",
+        },
+        {
+          title: "Deduplication & clean taxonomy",
+          text: "Test submissions, spam and duplicate phone numbers are flagged separately from genuine prospects so cost-per-qualified-discussion metrics stay honest.",
+        },
+        {
+          title: "Explicit consent & transparent handling",
+          text: "Forms explain how enquiry details are used, avoiding dark-pattern checkboxes or reselling lists—supporting durable trust with high-consideration Indian buyers.",
+        },
+      ],
+    },
+    relatedGuides: [
+      { label: "B2B services marketing scope", href: "/industries/b2b/" },
+      {
+        label: "Manufacturing & RFQ acquisition",
+        href: "/industries/manufacturing/",
+      },
+      {
+        label: "Download campaign enquiry tracker",
+        href: "/resources/enquiry-tracker/",
+      },
+    ],
     related: ["meta-ads", "google-ads", "whatsapp-marketing"],
   },
   ...additionalServices,
 ];
+
 export const getService = (slug: string) =>
   services.find((service) => service.slug === slug);
