@@ -33,7 +33,7 @@ export default function Home() {
         </div>
         <a className="studio-scroll" href="#approach" aria-label="Explore our approach"><span>SCROLL TO EXPLORE</span><span aria-hidden="true">↓</span></a>
         <div className="studio-hero-caption">
-          <p className="studio-label">DISTRIBUTION<br />AS A SERVICE</p>
+          <p className="studio-label">DISTRIBUTION <br />AS A SERVICE</p>
           <p>We bring strategy, content, media and real-world touchpoints together. So your business reaches the people it matters to.</p>
           <span className="studio-caption-place">CHENNAI · ACROSS INDIA<br />DIGITAL + PHYSICAL</span>
         </div>

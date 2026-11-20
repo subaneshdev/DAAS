@@ -7,7 +7,7 @@ The reference uses large serif type, a full-screen art-led opening, restrained n
 ## Changes
 - A server-rendered homepage with a cinematic hero, chapter navigation, capabilities, industries, real estate feature, process, demonstrations, resources, FAQs and enquiry CTA.
 - A compact native disclosure menu with keyboard access, Escape dismissal and links to the existing pages.
-- Existing 40 URLs, canonical metadata, sitemap, structured data and enquiry implementation retained.
+- Existing pages and 40 indexable sitemap URLs, canonical metadata, sitemap, structured data and enquiry implementation retained.
 - Georgia provides the editorial serif accent without a new font download. Existing Manrope and DM Sans remain in use.
 - The static hero has a brief entrance animation. Reduced-motion settings disable this. No scroll hijacking, autoplay video or WebGL dependency.
 - Image delivered as WebP through Next Image, with responsive sizes and a decorative empty alt on the hero. The separate concept-art feature has descriptive alt text.
