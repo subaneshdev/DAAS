@@ -13,10 +13,7 @@ export function Header() {
         <br />
         AS A SERVICE
       </span>
-      <Link className="header-specialty" href="/real-estate-marketing/">
-        <i />
-        Real estate. Our first specialty.
-      </Link>
+      <span className="header-location">CHENNAI / ACROSS INDIA</span>
       <Link className="header-cta" href="/contact/">
         Discuss your distribution goals
         <Arrow />
