@@ -6,6 +6,7 @@ import { organization } from "@/lib/seo";
 import { site } from "@/content/site";
 import "./globals.css";
 import "./studio.css";
+import "./film.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
