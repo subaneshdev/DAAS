@@ -12,13 +12,21 @@ export default function Home() {
   return <>
     <svg width="0" height="0" aria-hidden="true" style={{ position: "absolute", pointerEvents: "none" }}>
       <defs>
-        <filter id="daas-brand-grade" colorInterpolationFilters="sRGB">
-          <feColorMatrix type="saturate" values="0" />
-          <feComponentTransfer>
-            <feFuncR type="table" tableValues="0.035 0.16 0.54 1 0.96" />
-            <feFuncG type="table" tableValues="0.035 0.055 0.15 0.5255 0.953" />
-            <feFuncB type="table" tableValues="0.035 0.10 0.31 0.7451 0.937" />
-          </feComponentTransfer>
+        <filter id="daas-film-palette" colorInterpolationFilters="sRGB">
+          {/* Key blue scenery only; preserve skin, stone, foliage and highlights. */}
+          <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1 0 1 0 -0.03" result="blueKey" />
+          <feComponentTransfer in="blueKey" result="skyMask"><feFuncA type="table" tableValues="0 0.85 1 1" /></feComponentTransfer>
+          <feColorMatrix in="SourceGraphic" type="matrix" values="0.08 0.12 0.04 0 0.02  0.08 0.12 0.04 0 0.02  0.08 0.12 0.04 0 0.02  0 0 0 1 0" result="charcoalTexture" />
+          <feComposite in="charcoalTexture" in2="skyMask" operator="in" result="brandedSky" />
+          <feComposite in="SourceGraphic" in2="skyMask" operator="out" result="naturalDetails" />
+          <feComposite in="brandedSky" in2="naturalDetails" operator="over" result="scene" />
+          {/* Recolour strongly saturated red accents without tinting natural skin. */}
+          <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.5 -3 -1 0 -0.03" result="redKey" />
+          <feComponentTransfer in="redKey" result="accentMask"><feFuncA type="table" tableValues="0 0.65 1 1" /></feComponentTransfer>
+          <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0.5255 0 0 0 0  0.7451 0 0 0 0  0 0 0 1 0" result="pinkAccent" />
+          <feComposite in="pinkAccent" in2="accentMask" operator="in" result="brandedAccents" />
+          <feComposite in="scene" in2="accentMask" operator="out" result="sceneDetails" />
+          <feComposite in="brandedAccents" in2="sceneDetails" operator="over" />
         </filter>
       </defs>
     </svg>
