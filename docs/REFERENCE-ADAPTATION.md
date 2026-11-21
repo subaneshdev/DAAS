@@ -15,7 +15,7 @@ The reference is a continuous, pinned film experience, not a stack of convention
 - Mobile portrait framing, compact controls and touch scrolling.
 
 ## DaaS adaptation
-DaaS mark and footer wordmark; distribution-focused copy; digital and physical channels; industry coverage; contact@daas.media. Exact replacements are recorded in REFERENCE-COPY-MAP.json. The opening is fixed to the signal film to avoid the reference's random opening variants. Blue film colours are retained to match the requested reference; pink remains an interaction accent.
+DaaS mark and footer wordmark; distribution-focused copy; digital and physical channels; industry coverage; contact@daas.media. Exact replacements are recorded in REFERENCE-COPY-MAP.json. The opening is fixed to the signal film to avoid the reference's random opening variants. The complete film is graded into DaaS charcoal, signature pink (#FF86BE) and warm white (#F5F3EF) using a shared SVG colour map. Header and footer use the full daas.media wordmark; primary controls use pink with black text. The same grade applies to the opening, scroll frames, process, FAQ and footer scenes.
 
 The reference demo submit handler is removed. The enquiry-scene button opens the existing /contact/ form, which explicitly prepares an email draft when no delivery integration is configured. No enquiry was sent during checks.
 

@@ -22,3 +22,26 @@ body:has(#daas-film-root){margin:0;padding:0;background:#0b0a09}
 #daas-film-root .ov .cta>.flood{font-size:0;line-height:0}
 #daas-film-root .ov .cta:hover{background:var(--paper);transform:none;color:var(--ink)}
 #daas-film-root .ov .rail a:hover{color:inherit}
+
+/* DaaS brand system: charcoal, signature pink and warm white throughout the film. */
+:root:has(#daas-film-root){--press:#111111;--paper:#F5F3EF;--ink:#111111;--daas-pink:#FF86BE}
+#daas-film-root .gl,#daas-film-root .fly,#daas-film-root .trans,#daas-film-root .ftx,#daas-film-root .foot,#daas-film-root .boot{filter:url(#daas-brand-grade)!important}
+#daas-film-root .ov .mark[data-daas]{left:30px;width:auto;max-width:190px;justify-content:flex-start}
+#daas-film-root .daas-header-wordmark{font:700 29px/1 'GT Standard L',Arial,sans-serif;letter-spacing:-1.5px;white-space:nowrap;color:#F5F3EF;text-shadow:0 1px 12px #1116}
+#daas-film-root .daas-header-wordmark>span{font-size:15px;letter-spacing:-.5px;color:#FF86BE}
+#daas-film-root .ov.on-light .daas-header-wordmark{color:#111;text-shadow:none}
+#daas-film-root .ov.on-light .daas-header-wordmark>span{color:#8c2453}
+#daas-film-root .ov .cta,#daas-film-root .ov .hdr,#daas-film-root .cf-cta{background:#FF86BE!important;color:#111!important;border-color:#FF86BE}
+#daas-film-root .ov .cta .flood{background:#F5F3EF;color:#111}
+#daas-film-root .ov .cta .arw,#daas-film-root .ov .hdr .arw{border-color:#1116}
+#daas-film-root .ov .tag{background:#111b;color:#FF86BE;border:1px solid #ff86be40}
+#daas-film-root .ft-mark .daas-suffix{color:#FF86BE}
+#daas-film-root .ov .rail a.on{color:#FF86BE}
+#daas-film-root .ov.on-light .rail a.on{color:#111}
+#daas-film-root .film-fallback{background:#111}
+@media(max-width:720px){#daas-film-root .ov .mark[data-daas]{left:32px;max-width:170px}#daas-film-root .daas-header-wordmark{font-size:27px}#daas-film-root .daas-header-wordmark>span{font-size:14px}}
+#daas-film-root .ov .mark[data-daas]{transform:translateY(-50%)!important}
+#daas-film-root .ov .hdr .apply{background:#FF86BE;color:#111}
+#daas-film-root .ov .cta .flood{background:#FF86BE;color:#111}
+#daas-film-root .ov .cta:hover .flood{background:#F5F3EF}
+#daas-film-root .ov .hdr .apply:hover{background:#F5F3EF}
