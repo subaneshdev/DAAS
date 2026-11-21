@@ -1,6 +1,9 @@
+/* Footer links use full navigation to reset the homepage film runtime. */
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Link from "next/link";
 import { site } from "@/content/site";
 import { services } from "@/content/services";
+import { industries, projects, resources } from "@/content/growth";
 import { Arrow } from "./ui";
 export function Header() {
   return (
@@ -25,9 +28,9 @@ export function Footer() {
   return (
     <footer className="footer section-pad">
       <div className="footer-top">
-        <Link className="wordmark" href="/">
+        <a className="wordmark" href="/">
           daas<span>.media</span>
-        </Link>
+        </a>
         <p>
           From the first scroll
           <br />
@@ -38,20 +41,21 @@ export function Footer() {
           <Arrow />
         </a>
       </div>
-      <div className="footer-links">
+      <nav className="footer-links" aria-label="All DaaS pages">
         <div>
           <p className="eyebrow">EXPLORE</p>
-          <Link href="/about/">About DaaS.media</Link>
-          <Link href="/real-estate-marketing/">Real estate distribution</Link>
-          <Link href="/services/">All services</Link>
-          <Link href="/distribution/">Distribution approach</Link>
-          <Link href="/industries/">Industries</Link>
-          <Link href="/sample-projects/">Sample projects</Link>
-          <Link href="/resources/">Free resources</Link>
-          <Link href="/pilot/">Start a pilot</Link>
-          <Link href="/locations/">Campaign coverage</Link>
-          <Link href="/contact/">Discuss your distribution goals</Link>
-          <Link href="/privacy/">Privacy</Link>
+          <a href="/">Home</a>
+          <a href="/about/">About DaaS.media</a>
+          <a href="/real-estate-marketing/">Real estate distribution</a>
+          <a href="/services/">All services</a>
+          <a href="/distribution/">Distribution approach</a>
+          <a href="/industries/">Industries</a>
+          <a href="/sample-projects/">Sample projects</a>
+          <a href="/resources/">Free resources</a>
+          <a href="/pilot/">Start a pilot</a>
+          <a href="/locations/">Campaign coverage</a>
+          <a href="/contact/">Discuss your distribution goals</a>
+          <a href="/privacy/">Privacy</a>
         </div>
         {(
           ["Strategy & reach", "Content & identity", "Web & systems"] as const
@@ -61,13 +65,25 @@ export function Footer() {
             {services
               .filter((s) => s.category === category)
               .map((s) => (
-                <Link href={`/services/${s.slug}/`} key={s.slug}>
+                <a href={`/services/${s.slug}/`} key={s.slug}>
                   {s.name}
-                </Link>
+                </a>
               ))}
           </div>
         ))}
-      </div>
+        <div>
+          <p className="eyebrow">Industries</p>
+          {industries.map((page) => <a href={`/industries/${page.slug}/`} key={page.slug}>{page.name}</a>)}
+        </div>
+        <div>
+          <p className="eyebrow">Resources</p>
+          {resources.map((page) => <a href={`/resources/${page.slug}/`} key={page.slug}>{page.name}</a>)}
+        </div>
+        <div>
+          <p className="eyebrow">Sample projects</p>
+          {projects.map((page) => <a href={`/sample-projects/${page.slug}/`} key={page.slug}>{page.name}</a>)}
+        </div>
+      </nav>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} DaaS.media</span>
         <span>BUILT FOR DISTRIBUTION.</span>
