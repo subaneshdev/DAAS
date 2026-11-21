@@ -8,7 +8,7 @@ export function FilmExperience() {
     if (!probe.getContext("webgl")) return;
     const script = document.createElement("script");
     script.type = "module";
-    script.src = "/reference/experience.js";
+    script.src = "/reference/experience.js?v=daas-palette-2";
     document.body.appendChild(script);
     return () => { script.remove(); };
   }, []);

@@ -23,3 +23,6 @@ The reference demo submit handler is removed. The enquiry-scene button opens the
 Next.js remains the application framework. The homepage renders a meaningful heading, introduction and internal links on the server, then mounts the isolated film experience in the browser. Other pages, canonical URLs, sitemap, metadata and organisation schema remain intact. Film CSS is scoped to its root. The static introduction remains available without JavaScript or WebGL.
 
 The film runtime is a vendored, adapted public browser bundle in public/reference/experience.js. It is excluded from lint as generated vendor code. The original source repository and its licence were not supplied. Full document navigation intentionally resets its scroll/animation state. This is heavier than the previous static homepage: approximately 51 MB of locally hosted film/frame/font assets across the entire experience, loaded progressively by the reference engine. No claim of measured Core Web Vitals improvement is made.
+
+## Desktop/mobile palette correction
+The main film and WebGL transitions now apply the selective charcoal/pink palette in their fragment shaders. This removes their dependency on browser SVG filter compositing. The remaining image/video/2D layers retain the SVG filter. The film script URL is versioned so existing visitors fetch the corrected renderer.
